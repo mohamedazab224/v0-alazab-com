@@ -20,7 +20,7 @@ interface GoogleMapsProps {
   }>
 }
 
-export function GoogleMaps({
+function GoogleMaps({
   onLocationSelect,
   initialLocation = { lat: 30.0444, lng: 31.2357 }, // القاهرة
   height = "400px",
@@ -236,3 +236,6 @@ export function GoogleMaps({
     </div>
   )
 }
+
+export { GoogleMaps }
+export default GoogleMaps
