@@ -1,17 +1,43 @@
 "use client"
 
-import { useActionState } from "react"
+import { useActionState, startTransition } from "react"
 import { signIn } from "@/lib/actions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Loader2, Mail, Lock } from "lucide-react"
+import { Loader2, Mail, Lock, TestTube } from "lucide-react"
 import Link from "next/link"
 
 export default function LoginForm() {
   const [state, formAction] = useActionState(signIn, null)
+
+  const handleDemoLogin = () => {
+    const form = document.createElement("form")
+    form.style.display = "none"
+
+    const emailInput = document.createElement("input")
+    emailInput.name = "email"
+    emailInput.value = "demo@al-azab.co"
+
+    const passwordInput = document.createElement("input")
+    passwordInput.name = "password"
+    passwordInput.value = "demo123456"
+
+    form.appendChild(emailInput)
+    form.appendChild(passwordInput)
+    document.body.appendChild(form)
+
+    const formData = new FormData(form)
+
+    // استخدام startTransition لتجنب خطأ useActionState
+    startTransition(() => {
+      formAction(formData)
+    })
+
+    document.body.removeChild(form)
+  }
 
   return (
     <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
@@ -75,10 +101,28 @@ export default function LoginForm() {
             )}
           </Button>
 
+          <Button
+            type="button"
+            onClick={handleDemoLogin}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+            disabled={state?.loading}
+          >
+            <TestTube className="mr-2 h-4 w-4" />
+            دخول بحساب تجريبي
+          </Button>
+
           <div className="text-center">
             <Link href="/auth/sign-up" className="text-yellow-400 hover:text-yellow-300 text-sm">
               ليس لديك حساب؟ إنشاء حساب جديد
             </Link>
+          </div>
+
+          <div className="mt-4 p-3 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+            <p className="text-blue-300 text-sm font-medium mb-2">بيانات الحساب التجريبي:</p>
+            <div className="text-xs text-blue-200 space-y-1">
+              <p>البريد الإلكتروني: demo@al-azab.co</p>
+              <p>كلمة المرور: demo123456</p>
+            </div>
           </div>
         </form>
       </CardContent>

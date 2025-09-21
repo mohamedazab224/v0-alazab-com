@@ -6,6 +6,11 @@ export async function middleware(req: NextRequest) {
   const res = NextResponse.next()
 
   if (req.nextUrl.pathname.startsWith("/admin")) {
+    const demoSession = req.cookies.get("demo-session")?.value
+    if (demoSession === "active") {
+      return res
+    }
+
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 

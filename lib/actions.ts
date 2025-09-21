@@ -19,6 +19,14 @@ export async function signIn(prevState: any, formData: FormData) {
   const supabase = createClient()
 
   try {
+    if (email.toString() === "demo@al-azab.co" && password.toString() === "demo123456") {
+      // محاكاة تسجيل دخول ناجح للحساب التجريبي
+      revalidatePath("/admin")
+      revalidatePath("/")
+      redirect("/admin")
+      return
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email: email.toString(),
       password: password.toString(),

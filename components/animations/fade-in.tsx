@@ -30,37 +30,38 @@ export function FadeIn({
   const prefersReducedMotion = useReducedMotion()
 
   const getDirectionOffset = () => {
-    if (prefersReducedMotion) return {}
+    if (prefersReducedMotion) return { opacity: 1, x: 0, y: 0 }
 
     switch (direction) {
       case "up":
-        return { y: distance }
+        return { opacity: 0, y: distance, x: 0 }
       case "down":
-        return { y: -distance }
+        return { opacity: 0, y: -distance, x: 0 }
       case "left":
-        return { x: distance }
+        return { opacity: 0, x: distance, y: 0 }
       case "right":
-        return { x: -distance }
+        return { opacity: 0, x: -distance, y: 0 }
       default:
-        return {}
+        return { opacity: 0, x: 0, y: 0 }
     }
   }
 
   const variants = {
-    hidden: {
-      opacity: 0,
-      ...getDirectionOffset(),
-    },
+    hidden: getDirectionOffset(),
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
       transition: {
-        duration,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1.0], // Smooth easing
+        duration: prefersReducedMotion ? 0 : duration,
+        delay: prefersReducedMotion ? 0 : delay,
+        ease: "easeOut",
       },
     },
+  }
+
+  if (prefersReducedMotion) {
+    return <div className={cn(className)}>{children}</div>
   }
 
   return (
@@ -69,7 +70,7 @@ export function FadeIn({
       initial="hidden"
       whileInView="visible"
       viewport={{ once, threshold }}
-      variants={prefersReducedMotion ? {} : variants}
+      variants={variants}
     >
       {children}
     </motion.div>

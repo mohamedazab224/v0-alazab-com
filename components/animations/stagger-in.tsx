@@ -32,47 +32,48 @@ export function StaggerIn({
   const prefersReducedMotion = useReducedMotion()
 
   const getDirectionOffset = () => {
-    if (prefersReducedMotion) return {}
+    if (prefersReducedMotion) return { opacity: 1, x: 0, y: 0 }
 
     switch (direction) {
       case "up":
-        return { y: distance }
+        return { opacity: 0, y: distance, x: 0 }
       case "down":
-        return { y: -distance }
+        return { opacity: 0, y: -distance, x: 0 }
       case "left":
-        return { x: distance }
+        return { opacity: 0, x: distance, y: 0 }
       case "right":
-        return { x: -distance }
+        return { opacity: 0, x: -distance, y: 0 }
       default:
-        return {}
+        return { opacity: 0, x: 0, y: 0 }
     }
   }
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: prefersReducedMotion ? 1 : 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: staggerDelay,
-        delayChildren: delay,
+        staggerChildren: prefersReducedMotion ? 0 : staggerDelay,
+        delayChildren: prefersReducedMotion ? 0 : delay,
       },
     },
   }
 
   const itemVariants = {
-    hidden: {
-      opacity: 0,
-      ...getDirectionOffset(),
-    },
+    hidden: getDirectionOffset(),
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
       transition: {
-        duration,
-        ease: [0.25, 0.1, 0.25, 1.0], // Smooth easing
+        duration: prefersReducedMotion ? 0 : duration,
+        ease: "easeOut",
       },
     },
+  }
+
+  if (prefersReducedMotion) {
+    return <div className={cn(className)}>{children}</div>
   }
 
   return (
@@ -81,10 +82,10 @@ export function StaggerIn({
       initial="hidden"
       whileInView="visible"
       viewport={{ once, threshold }}
-      variants={prefersReducedMotion ? {} : containerVariants}
+      variants={containerVariants}
     >
       {React.Children.map(children, (child, index) => (
-        <motion.div key={index} variants={prefersReducedMotion ? {} : itemVariants}>
+        <motion.div key={index} variants={itemVariants}>
           {child}
         </motion.div>
       ))}

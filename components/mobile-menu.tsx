@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { useLanguage } from "@/contexts/language-context"
+import { MobileNavItem, MobileSubNavItem } from "./mobile-nav-item" // Import MobileNavItem and MobileSubNavItem
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -75,9 +76,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {isOpen && (
           <motion.div
             ref={menuRef}
-            initial={{ x: language === "ar" ? "-100%" : "100%" }}
+            initial={{ x: language === "ar" ? -400 : 400 }}
             animate={{ x: 0 }}
-            exit={{ x: language === "ar" ? "-100%" : "100%" }}
+            exit={{ x: language === "ar" ? -400 : 400 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className={`fixed top-0 ${language === "ar" ? "left-0" : "right-0"} bottom-0 w-[85vw] sm:w-[350px] bg-background border-${language === "ar" ? "r" : "l"} border-amber-200 dark:border-amber-800 z-50 md:hidden overflow-y-auto`}
           >
@@ -133,7 +134,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     stiffness: 300,
                     damping: 20,
                     delay: 0.2,
-                    mass: 0.8,
                   }}
                   className="space-y-4"
                 >
@@ -220,7 +220,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   stiffness: 300,
                   damping: 20,
                   delay: 0.7,
-                  mass: 0.8,
                 }}
               >
                 <Link href="/contact#quote-form" onClick={onClose}>
@@ -245,97 +244,5 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         )}
       </AnimatePresence>
     </>
-  )
-}
-
-// Mobile Nav Item
-function MobileNavItem({
-  href,
-  label,
-  isActive,
-  onClick,
-  delay = 0,
-}: {
-  href: string
-  label: string
-  isActive: boolean
-  onClick: () => void
-  delay?: number
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-        delay: delay,
-        mass: 0.8,
-      }}
-      whileHover={{ scale: 1.02, backgroundColor: "rgba(245, 158, 11, 0.05)" }}
-      className="overflow-hidden rounded-lg"
-    >
-      <Link
-        href={href}
-        className={`text-base sm:text-lg font-medium block text-center py-2 sm:py-3 px-3 sm:px-4 rounded-lg transition-all duration-300 ${
-          isActive ? "text-amber-500 bg-amber-50 dark:bg-amber-900/20" : ""
-        }`}
-        onClick={onClick}
-      >
-        <motion.span
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="inline-block"
-        >
-          {label}
-        </motion.span>
-      </Link>
-    </motion.div>
-  )
-}
-
-// Mobile Sub Nav Item
-function MobileSubNavItem({
-  href,
-  label,
-  isActive,
-  onClick,
-}: {
-  href: string
-  label: string
-  isActive: boolean
-  onClick: () => void
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      whileHover={{
-        scale: 1.02,
-        backgroundColor: "rgba(245, 158, 11, 0.05)",
-        transition: { type: "spring", stiffness: 400, damping: 15 },
-      }}
-      className="overflow-hidden rounded-lg"
-    >
-      <Link
-        href={href}
-        className={`block text-sm sm:text-base py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg transition-all duration-300 text-center ${
-          isActive ? "text-amber-500 bg-amber-50 dark:bg-amber-900/20" : ""
-        }`}
-        onClick={onClick}
-      >
-        <motion.span
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="inline-block"
-        >
-          {label}
-        </motion.span>
-      </Link>
-    </motion.div>
   )
 }
