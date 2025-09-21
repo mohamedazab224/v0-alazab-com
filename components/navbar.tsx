@@ -134,7 +134,7 @@ export function Navbar() {
                   className="relative"
                 >
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logaz%281%29-sByqX9iox91NTtuDJGWMaC6dEtGtZ9.gif"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logaz%281%29-DCmawWOJdQmSRtShAnFStYKhaa6RuE.gif"
                     alt="Al-Azab Construction Logo"
                     width={80}
                     height={80}
