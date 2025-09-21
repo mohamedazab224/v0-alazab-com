@@ -18,7 +18,10 @@ const config = {
         "2xl": "1400px",
       },
     },
-    extend: {
+  borderColor: {
+        DEFAULT: 'hsl(var(--border))',
+    },
+  extend: {
       fontFamily: {
         sans: ["var(--font-poppins)", "sans-serif"],
         heading: ["var(--font-montserrat)", "sans-serif"],

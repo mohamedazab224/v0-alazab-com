@@ -17,7 +17,7 @@ export function Footer() {
           <div className="text-center sm:text-left">
             <Link href="/" className="flex items-center gap-2 mb-4 sm:mb-6 justify-center sm:justify-start">
               <img
-                src="https://al-azab.co/images/logaz.gif"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logaz-EKCUwFnIO6yd7bgCAylvRBI17C7sN3.gif"
                 alt={language === "ar" ? "شعار شركة العزب للإنشاءات" : "Al-Azab Construction Logo"}
                 className="h-8 w-auto"
               />
