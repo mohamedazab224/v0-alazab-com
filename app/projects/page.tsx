@@ -19,7 +19,7 @@ export default function ProjectsPage() {
       <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10" />
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/cuate-23-9lggO6sZ9EFmMoDYCJhbiJvt65uPuN.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/cuate-23%281%29-vbyApTWZuJWdeCWJxDLAvkycjOvSJv.png"
           alt="Construction projects"
           fill
           className="object-cover"
@@ -196,7 +196,7 @@ export default function ProjectsPage() {
               className={`relative h-[500px] rounded-3xl overflow-hidden shadow-2xl ${language === "ar" ? "order-1 md:order-2" : ""}`}
             >
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-1-E35SnifSjIXhdYpiS0WxMqR763zxl0.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-1%281%29-kuQ34Fx5fmHTFSNju2Vac2l8ZkPtD8.png"
                 alt="Construction process"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
