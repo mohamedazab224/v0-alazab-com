@@ -10,6 +10,8 @@ import { Calendar, MapPin, Phone, Mail, User, Search, Filter, Eye, Edit } from "
 import { useLanguage } from "@/components/language-context"
 import Link from "next/link"
 
+export const dynamic = "force-dynamic"
+
 interface MaintenanceRequest {
   id: string
   request_number: string
