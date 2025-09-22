@@ -21,25 +21,11 @@ export default function NotFound() {
       >
         <Card className="border-0 shadow-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
           <CardContent className="p-12">
-            {/* 404 Number */}
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="mb-8"
-            >
-              <h1 className="text-8xl md:text-9xl font-bold text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text">
-                404
-              </h1>
+            <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ delay: 0.2, duration: 0.5 }} className="mb-8">
+              <h1 className="text-8xl md:text-9xl font-bold text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text">404</h1>
             </motion.div>
 
-            {/* Error Message */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="mb-8"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.5 }} className="mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {language === "ar" ? "الصفحة غير موجودة" : "Page Not Found"}
               </h2>
@@ -50,13 +36,8 @@ export default function NotFound() {
               </p>
             </motion.div>
 
-            {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/">
                 <Button className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   <Home className={`w-5 h-5 ${isRTL ? "ml-2" : "mr-2"}`} />
@@ -65,61 +46,35 @@ export default function NotFound() {
               </Link>
 
               <Link href="/contact">
-                <Button
-                  variant="outline"
-                  className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 px-8 py-3 text-lg font-semibold bg-transparent"
-                >
+                <Button variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 px-8 py-3 text-lg font-semibold bg-transparent">
                   <Phone className={`w-5 h-5 ${isRTL ? "ml-2" : "mr-2"}`} />
                   {language === "ar" ? "تواصل معنا" : "Contact Us"}
                 </Button>
               </Link>
             </motion.div>
 
-            {/* Helpful Links */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.5 }}
+              className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
               <p className="text-gray-500 dark:text-gray-400 mb-4">
                 {language === "ar" ? "أو جرب هذه الروابط المفيدة:" : "Or try these helpful links:"}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  href="/services"
-                  className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors"
-                >
+                <Link href="/services" className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors">
                   {language === "ar" ? "خدماتنا" : "Our Services"}
                 </Link>
-                <Link
-                  href="/projects"
-                  className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors"
-                >
+                <Link href="/projects" className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors">
                   {language === "ar" ? "مشاريعنا" : "Our Projects"}
                 </Link>
-                <Link
-                  href="/about"
-                  className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors"
-                >
+                <Link href="/about" className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors">
                   {language === "ar" ? "من نحن" : "About Us"}
                 </Link>
-                <Link
-                  href="/admin"
-                  className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors"
-                >
+                <Link href="/admin" className="text-yellow-600 hover:text-yellow-700 font-medium hover:underline transition-colors">
                   {language === "ar" ? "لوحة التحكم" : "Admin Panel"}
                 </Link>
               </div>
             </motion.div>
 
-            {/* Company Info */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="mt-8"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.5 }} className="mt-8">
               <p className="text-sm text-gray-400 dark:text-gray-500">
                 {language === "ar" ? "شركة العزب للإنشاءات" : "Al-Azab Construction Company"}
               </p>

@@ -16,21 +16,19 @@ import { SmartChatbot } from "@/components/smart-chatbot"
 
 import "@/app/globals.css"
 
-// Initialize the fonts with display swap for better performance
+// Fonts
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-montserrat",
   display: "swap",
 })
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-poppins",
   display: "swap",
 })
-
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -38,16 +36,17 @@ const cairo = Cairo({
   display: "swap",
 })
 
-export default function ClientLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [isAdminSidebarOpen, setIsAdminSidebarOpen] = useState(false)
 
   return (
-    <html lang="ar" className={`${montserrat.variable} ${poppins.variable} ${cairo.variable}`} suppressHydrationWarning>
+    <html
+      lang="ar"
+      dir="rtl"  // ✅ مهم علشان اتجاه الواجهة العربية
+      className={`${montserrat.variable} ${poppins.variable} ${cairo.variable}`}
+      suppressHydrationWarning
+    >
       <body className={`${cairo.className} antialiased`}>
         <LanguageProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
@@ -55,6 +54,7 @@ export default function ClientLayout({
               <Navbar />
               <AdminToggleButton onClick={() => setIsAdminSidebarOpen(true)} />
               <AdminSidebar isOpen={isAdminSidebarOpen} onClose={() => setIsAdminSidebarOpen(false)} />
+
               <AnimatePresence mode="wait">
                 <motion.main
                   key={pathname}
@@ -67,6 +67,7 @@ export default function ClientLayout({
                   {children}
                 </motion.main>
               </AnimatePresence>
+
               <Footer />
               <ScrollToTop />
               <SmartChatbot />
