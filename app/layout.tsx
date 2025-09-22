@@ -1,5 +1,6 @@
 import type React from "react"
 import ClientLayout from "./client-layout"
+import { LanguageProvider } from '@/components/language-context'
 import "./globals.css"
 
 export default function RootLayout({
@@ -7,7 +8,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <ClientLayout>{children}</ClientLayout>
+  return (
+    <html lang="ar" dir="rtl">
+      <body>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
+    </html>
+  )
 }
 
 export const metadata = {
