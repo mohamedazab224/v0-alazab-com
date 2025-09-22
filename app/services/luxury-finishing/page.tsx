@@ -17,7 +17,7 @@ export default function LuxuryFinishingPage() {
       <section className="relative h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10" />
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-1%281%29-TiSrwg68tBQenxdu5bkmTKVcRUTyKQ.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-1%281%29-qapsvOEWVpNSrILwjA0EaEkYfKTXON.png"
           alt="Luxury Finishing"
           fill
           className="object-cover"
@@ -94,7 +94,7 @@ export default function LuxuryFinishingPage() {
               className={`relative h-[600px] rounded-3xl overflow-hidden shadow-2xl ${language === "ar" ? "order-1 md:order-2" : ""}`}
             >
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-2%281%29-ndlaedm3YWUwMBlLwS7F3WyjInQPHO.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-2%281%29-Og8UkCa5U4sorUXDZRfcATBGpYdduH.png"
                 alt="Luxury Interior"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"

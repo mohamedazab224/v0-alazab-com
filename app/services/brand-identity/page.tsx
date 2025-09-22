@@ -17,7 +17,7 @@ export default function BrandIdentityPage() {
       <section className="relative h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-blue-800/70 to-purple-900/80 z-10" />
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-6%281%29-ykmn3uNfYBOWbpws4Rwdu8auQC5y25.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-6%281%29-S3SJROkCajTtAsvtrbImKqdjyQ1YBe.png"
           alt="Brand Identity Spaces"
           fill
           className="object-cover"
@@ -92,7 +92,7 @@ export default function BrandIdentityPage() {
               className={`relative h-[600px] rounded-3xl overflow-hidden shadow-2xl ${language === "ar" ? "order-1 md:order-2" : ""}`}
             >
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-7%281%29-rQkq7PH3IheqqfShtOFWPlX0reLH1s.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-7%281%29-Xyc2hZyTLmoYdqafPa6JG6KoxoLa7i.png"
                 alt="Brand Identity Interior"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"

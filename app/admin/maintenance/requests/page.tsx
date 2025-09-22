@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar, MapPin, Phone, Mail, User, Search, Filter, Eye, Edit } from "lucide-react"
-import { useLanguage } from "@/contexts/language-context" // ✅ المسار الصحيح
+import { useLanguage } from "@/contexts/language-context"
 import Link from "next/link"
 
 interface MaintenanceRequest {
@@ -102,7 +102,6 @@ export default function MaintenanceRequestsPage() {
       try {
         const res = await fetch("/api/maintenance/requests?limit=100", { cache: "no-store" })
         const json = await res.json()
-        // ✅ الـ API بيرجع { items: [...] }
         setRequests(Array.isArray(json?.items) ? json.items : [])
       } catch (e) {
         console.error("Error fetching requests:", e)
@@ -115,31 +114,20 @@ export default function MaintenanceRequestsPage() {
 
   const getStatusColor = (status?: string) => {
     switch (status) {
-      case "pending":
-        return "bg-yellow-100 text-yellow-800"
-      case "in_progress":
-        return "bg-blue-100 text-blue-800"
-      case "completed":
-        return "bg-green-100 text-green-800"
-      case "cancelled":
-        return "bg-red-100 text-red-800"
-      default:
-        return "bg-gray-100 text-gray-800"
+      case "pending": return "bg-yellow-100 text-yellow-800"
+      case "in_progress": return "bg-blue-100 text-blue-800"
+      case "completed": return "bg-green-100 text-green-800"
+      case "cancelled": return "bg-red-100 text-red-800"
+      default: return "bg-gray-100 text-gray-800"
     }
   }
-
   const getPriorityColor = (priority?: string) => {
     switch (priority) {
-      case "urgent":
-        return "bg-red-100 text-red-800"
-      case "high":
-        return "bg-orange-100 text-orange-800"
-      case "medium":
-        return "bg-yellow-100 text-yellow-800"
-      case "low":
-        return "bg-green-100 text-green-800"
-      default:
-        return "bg-gray-100 text-gray-800"
+      case "urgent": return "bg-red-100 text-red-800"
+      case "high": return "bg-orange-100 text-orange-800"
+      case "medium": return "bg-yellow-100 text-yellow-800"
+      case "low": return "bg-green-100 text-green-800"
+      default: return "bg-gray-100 text-gray-800"
     }
   }
 
