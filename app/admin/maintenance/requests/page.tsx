@@ -1,6 +1,5 @@
 "use client"
 export const dynamic = "force-dynamic"
-export const revalidate = 0
 export const fetchCache = "force-no-store"
 
 import { useState, useEffect, useMemo } from "react"
@@ -228,8 +227,8 @@ export default function MaintenanceRequestsPage() {
                   {t.number}: {r.request_number || r.id}
                 </CardTitle>
                 <div className="flex items-center gap-2">
-                  <Badge className={getStatusColor(r.status)}>{t[r.status as keyof typeof t] || r.status || "-"}</Badge>
-                  <Badge className={getPriorityColor(r.priority)}>{t[r.priority as keyof typeof t] || r.priority || "-"}</Badge>
+                  <Badge className={getStatusColor(r.status)}>{(t as any)[r.status as keyof typeof t] || r.status || "-"}</Badge>
+                  <Badge className={getPriorityColor(r.priority)}>{(t as any)[r.priority as keyof typeof t] || r.priority || "-"}</Badge>
                 </div>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">

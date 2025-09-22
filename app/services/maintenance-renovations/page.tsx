@@ -17,7 +17,7 @@ export default function MaintenanceRenovationsPage() {
       <section className="relative h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 via-emerald-800/70 to-orange-900/80 z-10" />
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-3%281%29-VyVCXsYNNBxmMqgXOpnLeO1OM5V4VX.png"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-3%281%29-gTvdjMYeziwe2mNFGiaEmYdDAvOdgB.png"
           alt="Maintenance & Renovations"
           fill
           className="object-cover"
@@ -94,7 +94,7 @@ export default function MaintenanceRenovationsPage() {
               className={`relative h-[600px] rounded-3xl overflow-hidden shadow-2xl ${language === "ar" ? "order-1 md:order-2" : ""}`}
             >
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-4%281%29-2jZnDyG7otqjq6MJFQhsGG52rC6xas.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/service-4%281%29-SH4UgbyLSns64LocsN0Dog8slnKEOq.png"
                 alt="Maintenance Work"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
