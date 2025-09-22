@@ -1,28 +1,30 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ["lucide-react"],
   },
   eslint: {
+    // يمنع توقف الـ build بسبب مشاكل ESLint
     ignoreDuringBuilds: true,
   },
   typescript: {
+    // يمنع توقف الـ build بسبب مشاكل TypeScript
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    domains: ["images.unsplash.com", "via.placeholder.com"],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
       {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
+        protocol: "https",
+        hostname: "via.placeholder.com",
       },
     ],
-    unoptimized: true,
+    unoptimized: true, // مهم مع Vercel لو مش عايز Image Optimization
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

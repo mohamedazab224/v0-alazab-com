@@ -16,9 +16,7 @@ export async function middleware(req: NextRequest) {
 
     if (supabaseUrl && supabaseKey) {
       try {
-        const supabase = createClient(supabaseUrl, supabaseKey)
-
-        // Check for both possible token cookie names
+        // جلب التوكن من الكوكيز
         const accessToken =
           req.cookies.get("sb-access-token")?.value ||
           req.cookies.get("supabase-auth-token")?.value ||
@@ -30,10 +28,18 @@ export async function middleware(req: NextRequest) {
           return NextResponse.redirect(loginUrl)
         }
 
+        // إنشاء Supabase client متوافق مع Edge
+        const supabase = createClient(supabaseUrl, supabaseKey, {
+          global: {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          },
+        })
+
+        // التحقق من المستخدم
         const {
           data: { user },
           error,
-        } = await supabase.auth.getUser(accessToken)
+        } = await supabase.auth.getUser()
 
         if (error || !user) {
           const loginUrl = new URL("/auth/login", req.url)
