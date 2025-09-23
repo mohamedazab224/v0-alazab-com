@@ -1,6 +1,6 @@
 "use client"
 
-import { useActionState, startTransition } from "react"
+import { useActionState, useEffect } from "react"
 import { signIn } from "@/lib/actions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,9 +9,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Loader2, Mail, Lock, TestTube } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export default function LoginForm() {
-  const [state, formAction] = useActionState(signIn, null)
+  const router = useRouter()
+  const [state, formAction, isPending] = useActionState(signIn, null)
+
+  useEffect(() => {
+    if (state?.success) {
+      router.push("/admin")
+    }
+  }, [state, router])
 
   const handleDemoLogin = () => {
     const form = document.createElement("form")
@@ -31,10 +39,8 @@ export default function LoginForm() {
 
     const formData = new FormData(form)
 
-    // استخدام startTransition لتجنب خطأ useActionState
-    startTransition(() => {
-      formAction(formData)
-    })
+    // استخدام formAction مباشرة
+    formAction(formData)
 
     document.body.removeChild(form)
   }
@@ -89,9 +95,9 @@ export default function LoginForm() {
           <Button
             type="submit"
             className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-semibold"
-            disabled={state?.loading}
+            disabled={isPending}
           >
-            {state?.loading ? (
+            {isPending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 جاري تسجيل الدخول...
@@ -105,7 +111,7 @@ export default function LoginForm() {
             type="button"
             onClick={handleDemoLogin}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold"
-            disabled={state?.loading}
+            disabled={isPending}
           >
             <TestTube className="mr-2 h-4 w-4" />
             دخول بحساب تجريبي
