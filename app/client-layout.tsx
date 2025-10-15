@@ -1,60 +1,43 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
-import { LanguageProvider } from "@/contexts/language-context"
-import { AdminSidebar } from "@/components/admin-sidebar"
-import { AdminToggleButton } from "@/components/admin-toggle-button"
-import { Montserrat, Poppins, Cairo } from "next/font/google"
+import { I18nProvider } from "@/lib/i18n-context"
+import { Cairo, Poppins } from "next/font/google"
 import { AnimatePresence, motion } from "framer-motion"
 import { usePathname } from "next/navigation"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { SmartChatbot } from "@/components/smart-chatbot"
 
-import "@/app/globals.css"
-
-// Fonts
-const montserrat = Montserrat({
-  subsets: ["latin"],
+const cairo = Cairo({
+  subsets: ["latin", "arabic"],
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
+  variable: "--font-cairo",
   display: "swap",
 })
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-poppins",
   display: "swap",
 })
-const cairo = Cairo({
-  subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-cairo",
-  display: "swap",
-})
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const pathname = usePathname()
-  const [isAdminSidebarOpen, setIsAdminSidebarOpen] = useState(false)
 
   return (
-    <html
-      lang="ar"
-      dir="rtl"  // ✅ مهم علشان اتجاه الواجهة العربية
-      className={`${montserrat.variable} ${poppins.variable} ${cairo.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="ar" className={`${cairo.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className={`${cairo.className} antialiased`}>
-        <LanguageProvider>
+        <I18nProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
             <div className="flex min-h-screen flex-col">
               <Navbar />
-              <AdminToggleButton onClick={() => setIsAdminSidebarOpen(true)} />
-              <AdminSidebar isOpen={isAdminSidebarOpen} onClose={() => setIsAdminSidebarOpen(false)} />
-
               <AnimatePresence mode="wait">
                 <motion.main
                   key={pathname}
@@ -67,13 +50,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                   {children}
                 </motion.main>
               </AnimatePresence>
-
               <Footer />
               <ScrollToTop />
-              <SmartChatbot />
             </div>
           </ThemeProvider>
-        </LanguageProvider>
+        </I18nProvider>
       </body>
     </html>
   )

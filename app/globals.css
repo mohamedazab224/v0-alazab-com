@@ -1,5 +1,7 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --background: oklch(1 0 0);
@@ -73,7 +75,8 @@
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -118,29 +121,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-size: 16px;
-    overflow-x: hidden;
-  }
-  html {
-    scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-
-@layer components {
-  .btn-primary {
-    @apply bg-yellow-500 text-white hover:bg-yellow-600 font-medium transition-all duration-300;
-  }
-
-  .btn-secondary {
-    @apply bg-gray-700 text-white hover:bg-gray-800 font-medium transition-all duration-300;
-  }
-
-  .btn-outline {
-    @apply border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white font-medium transition-all duration-300;
-  }
-
-  .btn-enhanced {
-    @apply relative overflow-hidden transform-gpu;
   }
 }
